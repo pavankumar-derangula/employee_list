@@ -36,17 +36,48 @@
 
             </div>
             <div1>
-            <label for="age">
-                <strong>AGE:</strong>
-            </label>
-                <input type="number" id="emp_age" placeholder="age(years)" name="employe_age" required>
+                <label for="age">
+                    <strong>AGE:</strong>
+                </label>
+                    <input type="number" id="emp_age" placeholder="age(years)" name="employe_age" required>
             </div1>
             <div>
-            <button type="button" class="btn" onclick="addEmpData()">Add</button>
-            <button type="button" class="btn cancel" onclick="closeForm()">Cancle</button>
-        </div>
+                <button type="button" class="btn" onclick="addEmpData()">Add</button>
+                <button type="button" class="btn cancel" onclick="closeForm()">Cancle</button>
+            </div>
           </form>
         </div>
+       <div class='edit-popup' id='editformData'> 
+         <form  class="edit-container" id='editData'>
+                <h2>Edit employee details..</h2>
+            
+                <div>
+                <label for="name">
+                <strong>NAME:</strong>
+                </label>
+                <input type="text" id="emp_name" placeholder="full name" name="employe_name" required>
+                </div>
+                <div>
+                <label for="salary">
+                    <strong>SALARY:</strong>
+                </label>
+                <input type="number" id="emp_salary" placeholder="salary" name="employe_salary" required>
+
+                </div>
+                <div1>
+                    <label for="age">
+                        <strong>AGE:</strong>
+                    </label>
+                        <input type="number" id="emp_age" placeholder="age(years)" name="employe_age" required>
+                </div1>
+                <div>
+                    <button type="button" class="btn" onclick="editEmpData()">Upate</button>
+                    <button type="button" class="btn cancel" onclick="closeeditForm()">Cancle</button>
+                </div>
+          </form>
+        </div>
+        
+         
     </div>
     <div class="employee_list">
         
@@ -59,28 +90,9 @@
                 <th>NAME</th>
                 <th>SALARY</th>
                 <th>AGE</th>
-                
+                <th>OPTIONS</th>
             </tr>
-         <!--  <div class="emp_list-0">
-                <tr class=" emp_details">
-                    <td class="id">0</td>
-                    <td class="name">0</td>
-                    <td class="salary">0</td>
-                    <td class="age">0</td>
-                    <div class="buttons">
-                        <td class="edt_but"> 
-                            <div>
-                                <button class="item_edt" >EDIT</button>
-                            </div>
-                        </td>
-                        <td class="del_but">
-                            <div>
-                                <button class="item_delete">DELETE</button>
-                            </div>
-                        </td>
-                    </div>    
-                </tr>
-            </div> -->
+         
         </table>
 
     </div>

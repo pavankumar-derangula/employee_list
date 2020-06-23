@@ -4,13 +4,26 @@
 function openForm() {
     document.getElementById("popupForm").style.display="block";
   }
+  //open edit form
+  function openEditForm(){
+    document.getElementById("editformData").style.display="block";
+  }
   
   function closeForm() {
-  x=document.getElementById('formData');
+   x=document.getElementById('formData');
     x.elements[0].value='';
     x.elements[1].value='';
     x.elements[2].value='';
-    document.getElementById("popupForm").style.display="none";
+   document.getElementById("popupForm").style.display="none";
+    
+  }
+  //close edit form
+  function closeeditForm(){
+    x=document.getElementById('editData');
+    x.elements[0].value='';
+    x.elements[1].value='';
+    x.elements[2].value='';
+   document.getElementById("editformData").style.display="none";
   }
 
 
@@ -44,13 +57,80 @@ function uiUpdate(update){
     var cell2=row.insertCell(1);
     var cell3=row.insertCell(2);
     var cell4=row.insertCell(3);
+    var cell5=row.insertCell(4);
     cell1.innerHTML=update.data[i]["id"];
     cell2.innerHTML=update.data[i]["employee_name"];
     cell3.innerHTML=update.data[i]["employee_salary"];
     cell4.innerHTML=update.data[i]["employee_age"];
+    cell5.innerHTML="<button onClick='editForm(this)'  >EDIT</button><button onClick='DeleteRow(this)'>DELETE</button>";
+
+
   }
 
 }
+var r_index;
+function editForm(r){
+  var i=r.parentNode.parentNode.rowIndex;
+  r_index=i;
+  //console.log(i);
+  
+  x=document.getElementById('editData');
+  var data={
+   // id:document.getElementById('myTable').rows[i].cells[0].innerHTML,
+    name:document.getElementById('myTable').rows[i].cells[1].innerHTML,
+    salary:document.getElementById('myTable').rows[i].cells[2].innerHTML,
+    age:document.getElementById('myTable').rows[i].cells[3].innerHTML
+  }
+  x.elements[0].value=data.name;
+  x.elements[1].value=data.salary;
+  x.elements[2].value=data.age;
+  openEditForm();
+  
+}
+
+function editEmpData(){
+  
+ var x=document.getElementById('editData');
+  document.getElementById('myTable').rows[r_index].cells[1].innerHTML=x.elements[0].value;
+  document.getElementById('myTable').rows[r_index].cells[2].innerHTML=x.elements[1].value;
+  document.getElementById('myTable').rows[r_index].cells[3].innerHTML=x.elements[2].value;
+  window.alert('Employee data updated...!')
+  closeeditForm();
+
+}
+async function DeleteRow(r){
+  
+  var i=r.parentNode.parentNode.rowIndex;
+
+  
+  var data={
+    id:document.getElementById('myTable').rows[i].cells[0].innerHTML,
+    name:document.getElementById('myTable').rows[i].cells[1].innerHTML,
+    salary:document.getElementById('myTable').rows[i].cells[2].innerHTML,
+    age:document.getElementById('myTable').rows[i].cells[3].innerHTML
+  }
+  //Delete in api...
+  
+ /* var urlParams = new URLSearchParams(window.location.search);
+  var id = urlParams.get('id');
+  var add=await fetch('http://dummy.restapiexample.com/api/v1/delete/2/',{
+    method : 'DELETE',
+    mode : 'cors',
+    cache: 'no-cache',
+    credentials:'same-origin',
+    headers:{
+      'Content-Type':'application/json'
+    },
+    redirect:'follow',
+    referrerPolicy:'no-referrer',
+    body: JSON.stringify(data)
+
+  });*/
+  
+  document.getElementById('myTable').deleteRow(i);
+  window.alert('employee deleted');
+}
+
 
 
 function verify(data){
@@ -130,10 +210,12 @@ async function addEmpData()
         var cell2=row.insertCell(1);
         var cell3=row.insertCell(2);
         var cell4=row.insertCell(3);
+        var cell5=row.insertCell(4);
         cell1.innerHTML=checkId[checkId.length-1];
         cell2.innerHTML=x.elements[0].value;
         cell3.innerHTML=x.elements[1].value;
         cell4.innerHTML=x.elements[2].value;
+        cell5.innerHTML="<button onClick='editForm(this)'  >EDIT</button><button onClick='DeleteRow(this)'>DELETE</button>";
         closeForm();
       }
       else{

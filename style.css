@@ -95,5 +95,16 @@ button:active{
     background-color: cornflowerblue;
     transform: translateX(-50%);
 }
+.edit-popup{
+
+    display: none;
+    position: absolute;
+    z-index: 10;
+    width:500px;
+    top: 20%;
+    left:50%;
+    background-color: cornflowerblue;
+    transform: translateX(-50%);
+}
 
 
