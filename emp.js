@@ -18,7 +18,7 @@ function closeForm() {
   
 }
 //close edit form
-function closeeditForm(){
+function closeEditForm(){
   x=document.getElementById('editData');
   x.elements[0].value='';
   x.elements[1].value='';
