@@ -97,7 +97,7 @@ button:active{
 }
 .edit-popup{
 
-    display: none;
+     display: none;
     position: absolute;
     z-index: 10;
     width:500px;
